@@ -1,5 +1,5 @@
 {
-    "name": "alioygur/postman2html",
+    "name": "bein-sports/postman2html",
     "description": "postman collection to html",
     "require": {
         "symfony/console": "~2.6",

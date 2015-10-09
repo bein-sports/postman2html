@@ -8,7 +8,7 @@ Generating html file from a [postman](http://www.getpostman.com/) collection fil
 This library is available via [Composer](https://getcomposer.org/)
 
 ```bash
-composer global require "alioygur/postman2html=~1.0"
+composer global require "bein-sports/postman2html=~1.0"
 ```
 
 ## Usage
