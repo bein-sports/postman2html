@@ -1,5 +1,5 @@
 {
-    "name": "bein-sports/postman2html",
+    "name": "pyrex-fwi/postman2html",
     "description": "postman collection to html",
     "require": {
         "symfony/console": "~2.6",
