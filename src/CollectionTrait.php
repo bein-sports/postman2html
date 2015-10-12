@@ -14,7 +14,8 @@ trait CollectionTrait
      */
     public function markdown($property)
     {
-        return Markdown::defaultTransform($this->getProperty($property));
+        $mkd = new \Parsedown();
+        return $mkd->text($this->getProperty($property));
     }
 
     /**

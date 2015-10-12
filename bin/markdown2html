@@ -7,9 +7,9 @@ if (file_exists($a = __DIR__.'/../../../autoload.php')) {
 }
 
 
-use Alioygur\Postman2HTML\RenderCommand;
+use Alioygur\Postman2HTML\MarkdownConverterCommand;
 use Symfony\Component\Console\Application;
 
-$application = new Application("Postman collection to html", "1.0");
-$application->add(new RenderCommand());
+$application = new Application("Markdown to html", "1.0");
+$application->add(new MarkdownConverterCommand());
 $application->run();

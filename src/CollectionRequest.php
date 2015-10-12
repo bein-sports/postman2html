@@ -56,7 +56,7 @@ class CollectionRequest
     public function rawRequest()
     {
         $header = $this->method() . ' ' . $this->url() . ' ' . self::HTTP_VERSION . PHP_EOL;
-        $header .= 'Host: ' . $this->host() . PHP_EOL;
+        $header .= PHP_EOL;
         $header .= $this->headers;
 
         if ($this->rawModeData) {

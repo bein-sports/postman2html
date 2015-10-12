@@ -8,7 +8,7 @@ Generating html file from a [postman](http://www.getpostman.com/) collection fil
 This library is available via [Composer](https://getcomposer.org/)
 
 ```bash
-composer global require "bein-sports/postman2html=~1.0"
+composer require "bein-sports/postman2html=~1.0"
 ```
 
 ## Usage
@@ -16,8 +16,10 @@ composer global require "bein-sports/postman2html=~1.0"
 ### Simple example of usage
 
 ```bash
-postman2html render location-of-postman-collection-file.json
+bin/markdown2html convert src/AppBundle/Resources/doc/Security/Roles.md src/AppBundle/Resources/views/Documentation/roles.html.twig
+bin/postman2html render src/AppBundle/Resources/doc/Postman/postman-collection.json src/AppBundle/Resources/views/Documentation/index.html.twig
 ```
+
 
 ### Custom output file location and name, instead of default
 
