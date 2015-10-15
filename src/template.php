@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>beIN Sports REST API</title>
+    <title>beIN SPORTS REST API</title>
 
     <!-- Css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/css/bootstrap.min.css"/>
@@ -80,7 +80,7 @@
                 <ul class="nav">
                     <?php foreach ($collection->folders() as $folder): ?>
                         <li>
-                            <a href="#<?= $folder->id ?>"><?= $folder->name ?></a>
+                            <a href="#<?= $folder->name === 'Login' ? 'login' : $folder->id ?>"><?= $folder->name ?></a>
                             <ul class="nav">
                                 <?php foreach ($folder->requests() as $request): ?>
                                     <li>
@@ -94,15 +94,15 @@
             </nav>
         </div>
         <div class="col-sm-9">
-            <h1 >beIN Sports REST API Overview</h1>
+            <h1 >beIN SPORTS REST API Overview</h1>
             <h2 class="page-header">General notes</h2>
             <div>
-                <p>The beIN Sports API is organized around <a href="https://fr.wikipedia.org/wiki/Representational_State_Transfer">REST</a>.
+                <p>The beIN SPORTS API is organized around <a href="https://fr.wikipedia.org/wiki/Representational_State_Transfer">REST</a>.
                 Our API is designed to have predictable, resource-oriented URLs and to use <a href="https://en.wikipedia.org/wiki/List_of_HTTP_status_codes">HTTP response codes</a> to indicate API errors.
                 We use built-in HTTP features, like <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html">HTTP verbs</a>, which can be understood by off-the-shelf HTTP clients.
                 For all responses, Api always return <a href="http://json-ld.org/">JSON-LD</a> content (application/ld+json).
                 </p>
-                <p>The beIN Sports REST API provides programmatic access to read and write beIN Sports Api data (read or write contents, medias and more) with <a href="http://www.hydra-cg.com/">Hydra Core Vocabulary web standards</a>.</p>
+                <p>The beIN SPORTS REST API provides programmatic access to read and write beIN SPORTS Api data (read or write content, media and more) with <a href="http://www.hydra-cg.com/">Hydra Core Vocabulary web standards</a>.</p>
             </div>
             <div>
                 <h3 id="gn_voc">Vocabulary</h3>
@@ -122,10 +122,7 @@
                         <p>This placeholder represent user API auth Token, it's a long string like:</p>
                     </li>
                     <ul>
-                        <li>yJhbGciOiJSUIkpXUyJ9.eyJlJuYW1lIjoiYmVpbi1hcGlAc21pbGUuZnIiLCJ1c2VyX2lkIjoxL
-                        CJ1c2VyIjp7IkBjb250ZXh0IjoiXC9jb250ZXh0c1wvVXNlciIsIkBpZCI6IlwvdXNlcnNcLzEiLCJ
-                        AdHlwZSI6IlVzZXIiLCJlbWFpbCI6ImJlaW4tYXBpQHwic3VwZXJhZG1pbiI6dHJ1ZSwidXNlcm5hb
-                        WUiOiJiZWluLWFwaUBzbWlsZS5mciJ9LCJpYXQiOiIx</li>
+                        <li>eY4NzUsInVzZXJuYW1lIjoiYmVpbi1hcGlAc21pbGUuZnIiLCJ1c2VyX2lkIjo0MCwidXNlciI6RiM8HrkEuyjUPlbCyKyKV9H14uKh6WuMNYK3Jy4zr9hrcVRE-7i5G-yGLyx83MP7_55BJswMk2QCtBWHan-43M</li>
                     </ul>
                 </ul>
                 <ul>
@@ -143,7 +140,7 @@
                 <h3 id="gn_utf8">UTF-8 encoding</h3>
                 <ul>
                     <li>
-                        <p>Every string passed to and from the beINSPORTS API needs to be UTF-8 encoded</p>
+                        <p>Every string passed to and from the beIN SPORTS API needs to be UTF-8 encoded</p>
                     </li>
                 </ul>
 
@@ -220,11 +217,272 @@
                 <ul>
                     <li>
                         <p>Authenticate: Get a fresh api token</p>
-                        <p>You can do this from <a href="#20f9827d-48c8-19d6-b1fa-dc87dcf8ff3b">login_check</a> endpoint with your login and password account.</p>
+                        <p>You can do this from <strong>Login</strong> endpoint with your login and password account.</p>
                     </li>
                     <li>
                         <p>Include your token in all other requests</p>
                         <p>For <strong>POST</strong> queries, keep in mind that <strong>you are not forced to provide all the fields</strong> that make up the object, but <strong>only</strong> those that are rated <strong>mandatory</strong>, for <strong>PUT</strong> you can just provide updated fields.</p>
+                        <ul>
+                            <li>
+                                <p><strong>GET</strong> content collection example</p>
+                                <pre><code class="language-bash">curl 'https://api-int.beinsports.com/contents'  -H 'Authorization: Bearer eY4NzUsInVzZXJuYW1lIjoiYmVpbi1hcGlAc21pbGUuZnIiLCJ1c2VyX2lkIjo0MCwidXNlciI6RiM8HrkEuyjUPlbCyKyKV9H14uKh6WuMNYK3Jy4zr9hrcVRE-7i5G-yGLyx83MP7_55BJswMk2QCtBWHan-43M'</code></pre>
+                                <pre><code class="language-js">{
+    @context: "/contexts/Content",
+    @id: "/contents?category",
+    @type: "hydra:PagedCollection",
+    hydra:nextPage: "/contents?page=2",
+    hydra:totalItems: 7803,
+    hydra:itemsPerPage: 30,
+    hydra:firstPage: "/contents",
+    hydra:lastPage: "/contents?page=261",
+    hydra:member: [
+        {
+        @id: "/contents/83743",
+        @type: "Content",
+        author: null,
+        authorName: null,
+        body: "string",
+        channels: [],
+        createdAt: "2015-08-27T00:14:40+00:00",
+        deletedAt: null,
+        expiredAt: "2015-10-03T14:07:00+00:00",
+        externalId: "1ccgojyiw79vh1rnpw5nnoawnu",
+        externalUrl: null,
+        featured: false,
+        featuredMedia: {
+            @id: "/media/161569",
+            @type: "Media",
+            type: 1,
+            provider: "omnisport",
+            uri: "rogerschmidt-cropped_1p85anpusaluh1mhvzysr0xr9k.jpg",
+            altText: "RogerSchmidt - Cropped",
+            caption: "Bayer Leverkusen coach Roger Schmidt",
+            credit: "AFP",
+            source: "AFP",
+            externalUrl: "http://images.performgroup.com/di/library/omnisk.jpg?t=1816315535",
+            context: {
+                thumbnail_resized_800: "http://images.beinsports.com/DQ5ls2C4L0l_zli3N0xr9k.jpg"
+            },
+            author: null,
+            externalId: "enls943kyqx81e0exjirq8ngd",
+            createdAt: "2015-08-27T00:55:02+00:00",
+            updatedAt: "2015-08-27T00:55:02+00:00"
+        },
+        headline: "Leverkusen can challenge best - Schmidt",
+        media: [],
+        parent: "/contents/83742",
+        provider: "omnisport",
+        publishedAt: "2015-08-27T00:54:13+00:00",
+        reason: null,
+        shortHeadline: "Schmidt: Leverkusen can challenge",
+        site: "/sites/4",
+        slug: "leverkusen-can-challenge-best-schmidt-1",
+        status: 5,
+        subHead: "Leverkusen can challenge best - Schmidt",
+        taxonomy: [],
+        teaser: "A delighted Roger Schmidt is eyeing a run at play-off.",
+        type: 1,
+        updatedAt: "2015-10-14T10:10:54+00:00",
+        defaultCategory: {
+            @id: "/taxonomies/556",
+            @type: "Taxonomy",
+            context: {
+            tag_header_id: 176111452,
+            tag_header_div: 416422374220949200,
+            tag_outpage_id: 872077766980069000,
+            opta-competition: 8,
+            opta-season: 2015
+        },
+        websiteUrl: "en/football/news/leverkusen-can-challenge-best-schmidt-1/83743",
+        lockedBy: 40,
+        lockedAt: "2015-10-14T10:11:44+00:00",
+        lockedByUsername: ""
+        },
+        {},
+        {},
+        ...
+        {}
+    ]
+}</code></pre>
+
+                            </li>
+                            <li>
+                                <p><strong>GET</strong> a specific content example</p>
+                                <pre><code class="language-bash">curl 'https://api-int.beinsports.com/contents/83743'  -H 'Authorization: Bearer eY4NzUsInVzZXJuYW1lIjoiYmVpbi1hcGlAc21pbGUuZnIiLCJ1c2VyX2lkIjo0MCwidXNlciI6RiM8HrkEuyjUPlbCyKyKV9H14uKh6WuMNYK3Jy4zr9hrcVRE-7i5G-yGLyx83MP7_55BJswMk2QCtBWHan-43M'</code></pre>
+                                <pre><code class="language-js">{
+    @context: "/contexts/Content",
+    @id: "/contents/83743",
+    @type: "Content",
+    author: null,
+    authorName: null,
+    body: "string",
+    channels: [
+        {
+            @id: "/channels/1",
+            @type: "Channel",
+            name: "website"@id: "/channels/1",
+            @type: "Channel",
+            name: "website"
+        }
+    ],
+    createdAt: "2015-08-27T00:14:40+00:00",
+    deletedAt: null,
+    expiredAt: "2015-10-03T14:07:00+00:00",
+    externalId: "1ccgojyiw79vh1rnpw5nnoawnu",
+    externalUrl: null,
+    featured: false,
+    featuredMedia: {
+        @id: "/media/161569",
+        @type: "Media",
+        type: 1,
+        provider: "omnisport",
+        uri: "rogerschmidt-cropped_1p85anpusaluh1mhvzysr0xr9k.jpg",
+        altText: "RogerSchmidt - Cropped",
+        caption: "Bayer Leverkusen coach Roger Schmidt",
+        credit: "AFP",
+        source: "AFP",
+        externalUrl: "http://images.performgroup.com/di/library/omnisk.jpg?t=1816315535",
+        context: {
+            thumbnail_resized_800: "http://images.beinsports.com/DQ5ls2C4L0l_zli3N0xr9k.jpg"
+        },
+        author: null,
+        externalId: "enls943kyqx81e0exjirq8ngd",
+        createdAt: "2015-08-27T00:55:02+00:00",
+        updatedAt: "2015-08-27T00:55:02+00:00"
+    },
+    headline: "Leverkusen can challenge best - Schmidt",
+    media: [],
+    parent: "/contents/83742",
+    provider: "omnisport",
+    publishedAt: "2015-08-27T00:54:13+00:00",
+    reason: null,
+    shortHeadline: "Schmidt: Leverkusen can challenge",
+    site: "/sites/4",
+    slug: "leverkusen-can-challenge-best-schmidt-1",
+    status: 5,
+    subHead: "Leverkusen can challenge best - Schmidt",
+    taxonomy: [],
+    teaser: "A delighted Roger Schmidt is eyeing a run at play-off.",
+    type: 1,
+    updatedAt: "2015-10-14T10:10:54+00:00",
+    defaultCategory: {
+        @id: "/taxonomies/556",
+        @type: "Taxonomy",
+        context: {
+        tag_header_id: 176111452,
+        tag_header_div: 416422374220949200,
+        tag_outpage_id: 872077766980069000,
+        opta-competition: 8,
+        opta-season: 2015
+    },
+    websiteUrl: "en/football/news/leverkusen-can-challenge-best-schmidt-1/83743",
+    lockedBy: 40,
+    lockedAt: "2015-10-14T10:11:44+00:00",
+    lockedByUsername: ""
+    }
+}</code></pre>
+
+                            </li>
+                            <li>
+                                <p><strong>PUT</strong> content example</p>
+                                <pre><code class="language-js">curl -X PUT -H "Authorization: Bearer eY4NzUsInVzZXJuYW1lIjoiYmVpbi1hcGlAc21pbGUuZnIiLCJ1c2VyX2lkIjo0MCwidXNlciI6RiM8HrkEuyjUPlbCyKyKV9H14uKh6WuMNYK3Jy4zr9hrcVRE" -H "Content-Type: application/json;charset=UTF-8" -d '{
+    channels: [
+    "/channels/2",
+    ],
+    headline: "New Headline",
+    shortHeadline: "New short headline"
+}' 'https://api-int.beinsports.com/contents/1'
+</code></pre>
+                                <pre><code class="language-js">{
+    @context: "/contexts/Content",
+    @id: "/contents/83743",
+    @type: "Content",
+    author: null,
+    authorName: null,
+    body: "string",
+    channels: [
+        {
+        @id: "/channels/2",
+        @type: "Channel",
+        name: "mobile"
+        }
+    ],
+    createdAt: "2015-08-27T00:14:40+00:00",
+    deletedAt: null,
+    expiredAt: "2015-10-03T14:07:00+00:00",
+    externalId: "1ccgojyiw79vh1rnpw5nnoawnu",
+    externalUrl: null,
+    featured: false,
+    featuredMedia: {
+        @id: "/media/161569",
+        @type: "Media",
+        type: 1,
+        provider: "omnisport",
+        uri: "rogerschmidt-cropped_1p85anpusaluh1mhvzysr0xr9k.jpg",
+        altText: "RogerSchmidt - Cropped",
+        caption: "Bayer Leverkusen coach Roger Schmidt",
+        credit: "AFP",
+        source: "AFP",
+        externalUrl: "http://images.performgroup.com/di/library/omnisk.jpg?t=1816315535",
+        context: {
+            thumbnail_resized_800: "http://images.beinsports.com/DQ5ls2C4L0l_zli3N0xr9k.jpg"
+        },
+        author: null,
+        externalId: "enls943kyqx81e0exjirq8ngd",
+        createdAt: "2015-08-27T00:55:02+00:00",
+        updatedAt: "2015-08-27T11:22:52+00:00"
+    },
+    headline: "New Headline",
+    media: [],
+    parent: "/contents/83742",
+    provider: "omnisport",
+    publishedAt: "2015-08-27T00:54:13+00:00",
+    reason: null,
+    shortHeadline: "New short headline"
+    site: "/sites/4",
+    slug: "leverkusen-can-challenge-best-schmidt-1",
+    status: 5,
+    subHead: "Leverkusen can challenge best - Schmidt",
+    taxonomy: [],
+    teaser: "A delighted Roger Schmidt is eyeing a run at play-off.",
+    type: 1,
+    updatedAt: "2015-10-14T10:10:54+00:00",
+    defaultCategory: {
+        @id: "/taxonomies/556",
+        @type: "Taxonomy",
+        context: {
+        tag_header_id: 176111452,
+        tag_header_div: 416422374220949200,
+        tag_outpage_id: 872077766980069000,
+        opta-competition: 8,
+        opta-season: 2015
+    },
+    websiteUrl: "en/football/news/leverkusen-can-challenge-best-schmidt-1/83743",
+    lockedBy: 40,
+    lockedAt: "2015-10-14T10:11:44+00:00",
+    lockedByUsername: ""
+    }
+}</code></pre>
+
+                            </li>
+                            <li>
+                                <p><strong>DELETE</strong> content example</p>
+                                <pre><code class="language-bash">curl -X DELETE -H "Authorization: Bearer eY4NzUsInVzZXJuYW1lIjoiYmVpbi1hcGlAc21pbGUuZnIiLCJ1c2VyX2lkIjo0MCwidXNlciI6RiM8HrkEuyjUPlbCyKyKV9H14uKh6WuMNYK3Jy4zr9hrcVRE" 'https://api-int.beinsports.com/contents/83743'</code></pre>
+
+                            </li>
+                            <li>
+                                <p><strong>POST</strong> content example</p>
+                                <pre><code class="language-bash">curl -X POST -H "Authorization: Bearer eY4NzUsInVzZXJuYW1lIjoiYmVpbi1hcGlAc21pbGUuZnIiLCJ1c2VyX2lkIjo0MCwidXNlciI6RiM8HrkEuyjUPlbCyKyKV9H14uKh6WuMNYK3Jy4zr9hrcVRE" -H "Content-Type: application/json;charset=UTF-8" -d '{
+"priority": 1,
+"regex": "/france/",
+"html": null,
+"schema": null,
+"meta": "{\"title\": \"Accueil\"}",
+"site": "/sites/2"
+}' 'https://api-int.beinsports.com/seos'</code></pre>
+
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </div>
@@ -234,7 +492,7 @@
 
             <?php foreach ($collection->folders() as $folder): ?>
                 <div>
-                    <h3 class="page-header" id="<?= $folder->id ?>"><?= $folder->name ?></h3>
+                    <h3 class="page-header" id="<?= $folder->name === 'Login' ? 'login' : $folder->id ?>"><?= $folder->name ?></h3>
                     <?= $folder->markdown('description') ?>
 
                     <?php foreach ($folder->requests() as $request): ?>
