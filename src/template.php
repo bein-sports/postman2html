@@ -6,6 +6,7 @@
 
     <!-- Css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/css/bootstrap.min.css"/>
+
     <style>
         #affix-nav .nav li:not(.active) .nav {
             display: none;
@@ -74,6 +75,12 @@
                     </li>
                     <li>
                         <a href="#gn_gs">Getting Started</a>
+                    </li>
+                    <li>
+                        <a href="#gn_rwe">Real world example</a>
+                    </li>
+                    <li>
+                        <a href="#gn_pa">Partners account</a>
                     </li>
                 </ul>
                 <h4 class="text-info">Endpoints</h4>
@@ -485,6 +492,53 @@
                         </ul>
                     </li>
                 </ul>
+
+                <h3 id="gn_rwe">Real world example</h3>
+
+                <p>Following example is based on true request triggered by front API</p>
+
+                <ul>
+                    <li>
+                        <p>Retreive french news</p>
+
+                        <div class="tabs">
+                            <ul class="nav nav-tabs">
+                                <li role="presentation" class = "active"><a href="#tabs-1">Api URI</a></li>
+                                <li role="presentation" class = "active"><a href="#tabs-2">Api Response</a></li>
+                                <li role="presentation" class = "active"><a href="#tabs-3">Front correspondence</a></li>
+                            </ul>
+                            <div id="tabs-1">
+                                <p></p>
+                                <pre><code class="language-bash">http://api.beinsports.com/contents?type=1&status=5&order[publishedAt]=desc&category[id][]=175&orphan.category=0&category[children]=1&page=2&itemsPerPage=10&site=2</code></pre>
+
+                                <h4>Details</h4>
+                                <ul>
+                                    <li>type=1, retreive contents of type <strong>article</strong></li>
+                                    <li>status=5, retreive <strong>published</strong> contents</li>
+                                    <li>order[publishedAt]=desc, <strong>Order results by publication date</strong></li>
+                                    <li>category[id][]=175, retrieve only contents belongs to <strong>category 175</strong> (root category for France)</li>
+                                </ul>
+                            </div>
+                            <div id="tabs-2">
+                                <p></p>
+                                <pre><code class="language-javascript">{% endverbatim %}{{ include('AppBundle:Documentation:content_news.html.twig') }}{% verbatim %}</code></pre>
+                            </div>
+                            <div id="tabs-3">
+                                <p></p>
+                                    <img src="http://img15.hostingpics.net/pics/759895Capturedu20151030172344.png"/>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <h3 id="gn_pa">Partners account</h3>
+
+                <ul>
+                    <li>
+                        <div class="">
+                            <p>Before creating a partner account from the CMS, it is essential to inform <strong>Smile</strong> about data size that will be exchanged so that adjustments are made if necessary.</p>
+                        </div>
+                    </li>
+                </ul>
             </div>
             <?php /*echo $collection->markdown('description');*/ ?>
 
@@ -512,10 +566,17 @@
 
 <!-- JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/languages/http.min.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
+<script>
+    hljs.initHighlightingOnLoad();
+    $(function() {
+        $( ".tabs" ).tabs();
+    });
+
+</script>
 {% endverbatim %}
 </body>
 </html>
