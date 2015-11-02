@@ -495,7 +495,7 @@
 
                 <h3 id="gn_rwe">Real world example</h3>
 
-                <p>Following example is based on true request triggered by front API</p>
+                <p>Following example is based on real request triggered by beIN SPORTS website</p>
 
                 <ul>
                     <li>
@@ -503,9 +503,9 @@
 
                         <div class="tabs">
                             <ul class="nav nav-tabs">
-                                <li role="presentation" class = "active"><a href="#tabs-1">Api URI</a></li>
-                                <li role="presentation" class = "active"><a href="#tabs-2">Api Response</a></li>
-                                <li role="presentation" class = "active"><a href="#tabs-3">Front correspondence</a></li>
+                                <li role="presentation" class = ""><a href="#tabs-1">Api URI</a></li>
+                                <li role="presentation" class = ""><a href="#tabs-2">Api Response</a></li>
+                                <li role="presentation" class = ""><a href="#tabs-3">Front correspondence</a></li>
                             </ul>
                             <div id="tabs-1">
                                 <p></p>
@@ -535,7 +535,7 @@
                 <ul>
                     <li>
                         <div class="">
-                            <p>Before creating a partner account from the CMS, it is essential to inform <strong>Smile</strong> about data size that will be exchanged so that adjustments are made if necessary.</p>
+                            <p>Before creating a partner account from the CMS, it is essential to advise <strong>Smile</strong> about data size that will be exchanged so that adjustments are made if necessary.</p>
                         </div>
                     </li>
                 </ul>
