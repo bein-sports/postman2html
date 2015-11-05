@@ -502,30 +502,39 @@
                         <p>Retreive french news</p>
 
                         <div class="tabs">
-                            <ul class="nav nav-tabs">
-                                <li role="presentation" class = ""><a href="#tabs-1">Api URI</a></li>
-                                <li role="presentation" class = ""><a href="#tabs-2">Api Response</a></li>
-                                <li role="presentation" class = ""><a href="#tabs-3">Front correspondence</a></li>
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation" class="active">
+                                    <a href="#api-url" role="tab" data-toggle="tab" aria-controls="api-url" aria-expanded="false">API URL</a>
+                                </li>
+                                <li role="presentation">
+                                    <a href="#api-response" role="tab" data-toggle="tab" aria-controls="api-response" aria-expanded="false">API Response</a>
+                                </li>
+                                <li role="presentation">
+                                    <a href="#front-example" role="tab" data-toggle="tab" aria-controls="front-example" aria-expanded="false">Front correspondence</a>
+                                </li>
                             </ul>
-                            <div id="tabs-1">
-                                <p></p>
-                                <pre><code class="language-bash">http://api.beinsports.com/contents?type=1&status=5&order[publishedAt]=desc&category[id][]=175&orphan.category=0&category[children]=1&page=2&itemsPerPage=10&site=2</code></pre>
 
-                                <h4>Details</h4>
-                                <ul>
-                                    <li>type=1, retreive contents of type <strong>article</strong></li>
-                                    <li>status=5, retreive <strong>published</strong> contents</li>
-                                    <li>order[publishedAt]=desc, <strong>Order results by publication date</strong></li>
-                                    <li>category[id][]=175, retrieve only contents belongs to <strong>category 175</strong> (root category for France)</li>
-                                </ul>
-                            </div>
-                            <div id="tabs-2">
-                                <p></p>
-                                <pre><code class="language-javascript">{% endverbatim %}{{ include('AppBundle:Documentation:content_news.html.twig') }}{% verbatim %}</code></pre>
-                            </div>
-                            <div id="tabs-3">
-                                <p></p>
+                            <div class="tab-content">
+                                <div id="api-url" class="tab-pane active">
+                                    <p></p>
+                                    <pre><code class="language-bash">http://api.beinsports.com/contents?type=1&status=5&order[publishedAt]=desc&category[id][]=175&orphan.category=0&category[children]=1&page=2&itemsPerPage=10&site=2</code></pre>
+
+                                    <h4>Details</h4>
+                                    <ul>
+                                        <li>type=1, retreive contents of type <strong>article</strong></li>
+                                        <li>status=5, retreive <strong>published</strong> contents</li>
+                                        <li>order[publishedAt]=desc, <strong>Order results by publication date</strong></li>
+                                        <li>category[id][]=175, retrieve only contents belongs to <strong>category 175</strong> (root category for France)</li>
+                                    </ul>
+                                </div>
+                                <div id="api-response" class="tab-pane">
+                                    <p></p>
+                                    <pre><code class="language-javascript">{% endverbatim %}{{ include('AppBundle:Documentation:content_news.html.twig') }}{% verbatim %}</code></pre>
+                                </div>
+                                <div id="front-example" class="tab-pane">
+                                    <p></p>
                                     <img src="http://img15.hostingpics.net/pics/759895Capturedu20151030172344.png"/>
+                                </div>
                             </div>
                         </div>
                     </li>
